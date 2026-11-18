@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme')
+        if (t === 'dark') document.documentElement.classList.add('dark')
+        else document.documentElement.classList.remove('dark')
+      } catch (e) { /* ignore */ }
+    })()
+  </script>
+  <link rel="icon" type="image/png" href="/public/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>కొండ దేవత అమ్మవారి దేవాలయం</title>
+  <meta name="description"
+    content="Your premium digital companion for temple details, daily Panchang, auspicious muhurtas, custom bhajan playlists, and spiritual quotes. Connect with the eternal peace." />
+</head>
+
+<body
+  class="bg-gradient-to-br from-[var(--color-gold-500)] to-[var(--color-saffron-500)] dark:from-[var(--color-saffron-800)] dark:to-[var(--color-maroon-800)]">
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
+
+<!-- class="bg-gradient-to-br from-[var(--color-gold-500)] to-[var(--color-saffron-500)] dark:from-[var(--color-saffron-800)] dark:to-[var(--color-maroon-800)]" -->
