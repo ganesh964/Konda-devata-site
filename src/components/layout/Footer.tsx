@@ -56,15 +56,15 @@ export function Footer() {
           </h3>
           <ul className="space-y-3 text-xs">
             <li className="flex items-start gap-2">
-              <MapPin className="h-4 w-4 text-saffron-500 shrink-0 mt-0.5" />
+              <MapPin className="h-4 w-4 text-saffron-700 shrink-0 mt-0.5" />
               <span>సింహగిరి కాలనీ, సాలగ్రామపురం, విశాఖపట్నం, ఆంధ్రప్రదేశ్ 530024</span>
             </li>
             <li className="flex items-center gap-2">
-              <Mail className="h-4 w-4 text-saffron-500 shrink-0" />
+              <Mail className="h-4 w-4 text-saffron-700 shrink-0" />
               <span>support@kondadevata.org</span>
             </li>
             <li className="flex items-center gap-2">
-              <Phone className="h-4 w-4 text-saffron-500 shrink-0" />
+              <Phone className="h-4 w-4 text-saffron-700 shrink-0" />
               <span>+91 9553250533</span>
             </li>
           </ul>
