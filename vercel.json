@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/:path*",
+            "destination": "https://konda-devata-api.onrender.com/api/:path*"
+        }
+    ]
+}
