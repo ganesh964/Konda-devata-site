@@ -5,17 +5,19 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import { initDb, getAllImages, addImage, deleteImage } from './db.js';
-import { fileURLToPath } from 'url';
+// import { fileURLToPath } from 'url';
 const app = express();
 const PORT = process.env.PORT || 4000;
 const API_BASE = '/api';
 app.use(cors());
 app.use(express.json());
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Ensure uploads directory exists
-const uploadDir = path.join(__dirname, 'uploads');
-if (!fs.existsSync(uploadDir))
+const DATA_DIR = process.env.DATA_DIR || path.resolve(process.cwd(), 'data');
+const uploadDir = path.join(DATA_DIR, 'uploads');
+if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
+}
 // Serve uploaded files statically
 app.use('/uploads', express.static(uploadDir));
 // ── File size limits ──────────────────────────────────────────────────────────
@@ -83,7 +85,8 @@ app.post(`${API_BASE}/gallery`, upload.single('file'), async (req, res) => {
         }
         const { title = '', desc = '', year = '' } = req.body;
         // Build URL using the actual server port (not the proxied Vite host)
-        const fileUrl = `http://localhost:${PORT}/uploads/${req.file.filename}`;
+        const publicApiUrl = process.env.PUBLIC_API_URL || `http://localhost:${PORT}`;
+        const fileUrl = `${publicApiUrl}/uploads/${req.file.filename}`;
         const newImg = await addImage({
             src: fileUrl,
             title: title,

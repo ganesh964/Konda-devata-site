@@ -1,18 +1,24 @@
-// src/api/db.ts
+import 'dotenv/config';
 import path from 'node:path';
 import fs from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// SQLite database instance – generic parameters match sqlite3's Database and Statement types.
 let db;
 export async function initDb() {
-    const dbPath = path.resolve(__dirname, '../../gallery.db');
-    await fs.mkdir(path.dirname(dbPath), { recursive: true });
+    // Use DATA_DIR when configured.
+    // Local default: ./data
+    // Production: /var/data
+    const configuredDir = process.env.DATA_DIR || './data';
+    const dataDir = path.isAbsolute(configuredDir)
+        ? configuredDir
+        : path.resolve(process.cwd(), configuredDir);
+    await fs.mkdir(dataDir, { recursive: true });
+    const dbPath = path.join(dataDir, 'gallery.db');
     db = await open({
         filename: dbPath,
         driver: sqlite3.Database,
+        mode: sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
     });
     await db.run(`
     CREATE TABLE IF NOT EXISTS images (
@@ -22,7 +28,7 @@ export async function initDb() {
       "desc" TEXT,
       year INTEGER,
       type TEXT,
-      isUploaded INTEGER
+      isUploaded INTEGER DEFAULT 1
     )
   `);
     console.log('SQLite database initialized:', dbPath);

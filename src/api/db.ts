@@ -1,14 +1,8 @@
-
-// src/api/db.ts
-
+import 'dotenv/config';
 import path from 'node:path';
 import fs from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
 import sqlite3 from 'sqlite3';
 import { open, type Database } from 'sqlite';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export interface ImageRecord {
   id: number;
@@ -20,16 +14,27 @@ export interface ImageRecord {
   isUploaded: number;
 }
 
+// SQLite database instance – generic parameters match sqlite3's Database and Statement types.
 let db: Database<sqlite3.Database, sqlite3.Statement>;
 
 export async function initDb(): Promise<void> {
-  const dbPath = path.resolve(__dirname, '../../gallery.db');
+  // Use DATA_DIR when configured.
+  // Local default: ./data
+  // Production: /var/data
+  const configuredDir = process.env.DATA_DIR || './data';
 
-  await fs.mkdir(path.dirname(dbPath), { recursive: true });
+  const dataDir = path.isAbsolute(configuredDir)
+    ? configuredDir
+    : path.resolve(process.cwd(), configuredDir);
+
+  await fs.mkdir(dataDir, { recursive: true });
+
+  const dbPath = path.join(dataDir, 'gallery.db');
 
   db = await open({
     filename: dbPath,
     driver: sqlite3.Database,
+    mode: sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
   });
 
   await db.run(`
@@ -40,7 +45,7 @@ export async function initDb(): Promise<void> {
       "desc" TEXT,
       year INTEGER,
       type TEXT,
-      isUploaded INTEGER
+      isUploaded INTEGER DEFAULT 1
     )
   `);
 
