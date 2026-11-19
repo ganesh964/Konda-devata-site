@@ -3,16 +3,14 @@
     "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "strict": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "outDir": "dist-server",
-    "rootDir": "src",
     "skipLibCheck": true,
-    "strict": false,
     "types": [
       "node"
     ],
-    "sourceMap": true
+    "outDir": "./dist-server",
+    "rootDir": "./src/api"
   },
   "include": [
     "src/api/**/*.ts"
