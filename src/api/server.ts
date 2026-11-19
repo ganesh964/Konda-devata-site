@@ -1,11 +1,12 @@
+// src/api/server.ts
 
-import 'dotenv/config';
 import express, { type Request, type Response, type NextFunction } from 'express';
 import cors from 'cors';
 import multer, { type FileFilterCallback } from 'multer';
 import path from 'path';
 import fs from 'fs';
 import { initDb, getAllImages, addImage, deleteImage } from './db.js';
+// import { fileURLToPath } from 'url';
 
 
 
@@ -16,23 +17,19 @@ const API_BASE = '/api';
 app.use(cors());
 app.use(express.json());
 
+// const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Ensure uploads directory exists
-const DATA_DIR = process.env.DATA_DIR || './data';
+const DATA_DIR =
+  process.env.DATA_DIR || path.resolve(process.cwd(), 'data');
 
-const dataDir = path.isAbsolute(DATA_DIR)
-  ? DATA_DIR
-  : path.resolve(process.cwd(), DATA_DIR);
-
-const uploadDir = path.join(dataDir, 'uploads');
+const uploadDir = path.join(DATA_DIR, 'uploads');
 
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
 
-console.log('[API] Data directory:', dataDir);
-console.log('[API] Upload directory:', uploadDir);
-
+// Serve uploaded files statically
 app.use('/uploads', express.static(uploadDir));
 
 // ── File size limits ──────────────────────────────────────────────────────────
@@ -107,11 +104,11 @@ app.post(`${API_BASE}/gallery`, upload.single('file'), async (req: Request, res:
 
     const { title = '', desc = '', year = '' } = req.body;
     // Build URL using the actual server port (not the proxied Vite host)
-    const publicApiUrl = (
-      process.env.PUBLIC_API_URL || `http://localhost:${PORT}`
-    ).replace(/\/+$/, '');
+    const publicApiUrl =
+      process.env.PUBLIC_API_URL || `http://localhost:${PORT}`;
 
-    const fileUrl = `${publicApiUrl}/uploads/${req.file.filename}`;
+    const fileUrl =
+      `${publicApiUrl}/uploads/${req.file.filename}`;
 
     const newImg = await addImage({
       src: fileUrl,
