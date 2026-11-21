@@ -27,6 +27,7 @@ export function Bhajans() {
 
   const deities = ['All', 'Shiva', 'Krishna', 'Ganesha', 'Hanuman', 'Devi']
 
+
   const bhajans: BhajanTrack[] = [
     {
       id: 1,
@@ -34,49 +35,50 @@ export function Bhajans() {
       deity: "Shiva",
       singer: "Traditional Chant",
       duration: "4:32",
-      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" // Royalty free mp3 URL
+      audioUrl: "/audio/shiv-tandav.mp3",
     },
     {
       id: 2,
       title: "Achyutam Keshavam",
       deity: "Krishna",
-      singer: "Madhura Sastry",
+      singer: "Devotional Chant",
       duration: "3:45",
-      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+      audioUrl: "/audio/achyutam-keshavam.mp3",
     },
     {
       id: 3,
       title: "Ganesh Atharvashirsha",
       deity: "Ganesha",
-      singer: "Sanskrit Academy",
+      singer: "Traditional Chant",
       duration: "5:12",
-      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+      audioUrl: "/audio/ganesh-atharvashirsha.mp3",
     },
     {
       id: 4,
       title: "Hanuman Chalisa",
       deity: "Hanuman",
-      singer: "Hariharan",
+      singer: "Devotional Chant",
       duration: "9:20",
-      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+      audioUrl: "/audio/hanuman-chalisa.mp3",
     },
     {
       id: 5,
       title: "Mahishasura Mardini Stotram",
       deity: "Devi",
-      singer: "Chanting Scholars",
+      singer: "Traditional Chant",
       duration: "7:04",
-      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+      audioUrl: "/audio/mahishasura-mardini.mp3",
     },
     {
       id: 6,
       title: "Madhurashtakam",
       deity: "Krishna",
-      singer: "Shreya Ghoshal",
+      singer: "Devotional Chant",
       duration: "4:15",
-      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
-    }
-  ]
+      audioUrl: "/audio/madhurashtakam.mp3",
+    },
+  ];
+
 
   const filteredBhajans = selectedDeity === 'All'
     ? bhajans
@@ -168,6 +170,14 @@ export function Bhajans() {
           onTimeUpdate={handleTimeUpdate}
           onLoadedMetadata={handleLoadedMetadata}
           onEnded={handleNext}
+          onError={() => {
+            console.error(
+              "Audio failed to load:",
+              currentTrack.audioUrl
+            );
+            setIsPlaying(false);
+          }}
+          preload="metadata"
         />
       )}
 

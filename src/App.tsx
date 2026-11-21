@@ -2,7 +2,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Layout } from './components/layout/Layout'
 import { Home } from './pages/Home'
-import { Panchang } from './pages/Panchang'
 import { Bhajans } from './pages/Bhajans'
 import { Quotes } from './pages/Quotes'
 import { Temples } from './pages/Temples'
@@ -12,6 +11,7 @@ import { Donate } from './pages/Donate'
 import { Blog } from './pages/Blog'
 import { About } from './pages/About'
 import { Contact } from './pages/Contact'
+import Panchang from './pages/Panchang'
 
 function App() {
   return (

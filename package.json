@@ -27,6 +27,7 @@
     "@tsparticles/engine": "^4.6.0",
     "@tsparticles/react": "^4.6.0",
     "@tsparticles/slim": "^4.6.0",
+    "astronomy-engine": "^2.1.19",
     "clsx": "^2.1.1",
     "cors": "^2.8.6",
     "dotenv": "^18.0.10",

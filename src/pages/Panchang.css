@@ -1,0 +1,511 @@
+/* =========================================
+   PANCHANG PAGE
+========================================= */
+
+.panchang-page {
+    min-height: 100vh;
+    padding: 26px 24px 55px;
+    background: linear-gradient(115deg,
+            #ffb94f 0%,
+            #ff9636 48%,
+            #ff791f 100%);
+}
+
+.panchang-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   HEADER CARD
+========================================= */
+
+.panchang-title-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 20px;
+    background: #fff;
+    border-radius: 13px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(130, 65, 15, 0.06);
+}
+
+.panchang-title-left {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.panchang-title-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff0e3;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.panchang-title-card h1 {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #292323;
+    margin: 0 0 4px;
+}
+
+.panchang-title-card p {
+    color: #888;
+    font-size: 11px;
+    margin: 0;
+}
+
+/* Date navigation */
+
+.panchang-date-navigation {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 5px 9px;
+    border-radius: 30px;
+    background: #fafafa;
+}
+
+.date-nav-btn {
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #777;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.date-nav-btn:hover {
+    background: #fff0e3;
+    color: #e77b25;
+}
+
+.panchang-date-input {
+    width: 125px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #393333;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.selected-date-label {
+    display: none;
+}
+
+/* =========================================
+   SUN AND MOON TIMINGS
+========================================= */
+
+.celestial-timings {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.celestial-item {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: #fff;
+    padding: 14px 17px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(130, 65, 15, 0.04);
+}
+
+.celestial-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.celestial-label {
+    color: #999;
+    font-size: 10px;
+}
+
+.celestial-info strong {
+    color: #302727;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.celestial-icon {
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    font-size: 18px;
+}
+
+.sun-icon,
+.sunset-icon {
+    background: #fff1df;
+    color: #ef8b27;
+}
+
+.moonrise-icon {
+    background: #eef1ff;
+    color: #6e83e8;
+}
+
+.moonset-icon {
+    background: #f5efff;
+    color: #a477d6;
+}
+
+/* =========================================
+   VEDIC CALENDAR SECTION
+========================================= */
+
+.vedic-calendar-card {
+    background: #fff;
+    border-radius: 13px;
+    padding: 22px 23px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(130, 65, 15, 0.04);
+}
+
+.vedic-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 19px;
+}
+
+.vedic-card-heading>span {
+    font-size: 19px;
+    color: #ee8a2d;
+}
+
+.vedic-card-heading h2 {
+    font-family: Georgia, serif;
+    color: #342a26;
+    font-size: 16px;
+    margin: 0;
+}
+
+.vedic-content-grid {
+    display: grid;
+    grid-template-columns: 34% 1fr;
+    gap: 20px;
+}
+
+.vedic-column {
+    min-width: 0;
+    background: #fcfaf9;
+    border-radius: 9px;
+    padding: 17px;
+}
+
+.column-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: #e27c31;
+    letter-spacing: 0.3px;
+    margin: 0 0 15px;
+}
+
+.vedic-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.vedic-detail-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.vedic-detail-label {
+    color: #999;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.vedic-detail-value {
+    color: #39312e;
+    font-size: 11px;
+    text-align: right;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.five-elements-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+}
+
+.element-item {
+    min-width: 0;
+    padding: 11px 12px;
+    border-radius: 7px;
+    background: #fff;
+    border: 1px solid #f5efea;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.element-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #999;
+    font-size: 10px;
+}
+
+.element-label span {
+    color: #e98b3e;
+}
+
+.element-item strong {
+    color: #3a302c;
+    font-size: 11px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   MUHURTA SECTIONS
+========================================= */
+
+.muhurta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.muhurta-panel {
+    min-width: 0;
+    padding: 19px 20px;
+    background: #fff;
+    border-radius: 13px;
+    box-shadow: 0 3px 12px rgba(130, 65, 15, 0.04);
+}
+
+.muhurta-heading {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 16px;
+}
+
+.muhurta-heading h2 {
+    font-family: Georgia, serif;
+    color: #342a26;
+    font-size: 14px;
+    margin: 0;
+}
+
+.heading-status {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.shubh-status {
+    color: #25b88c;
+}
+
+.ashubh-status {
+    color: #e56c78;
+}
+
+.muhurta-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.muhurta-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 13px;
+    border-radius: 8px;
+}
+
+.shubh-item {
+    background: #eff9f4;
+}
+
+.ashubh-item {
+    background: #fff0f1;
+}
+
+.muhurta-description {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.muhurta-description strong {
+    color: #38302d;
+    font-family: Georgia, serif;
+    font-size: 11px;
+}
+
+.muhurta-description span {
+    color: #999;
+    font-size: 9px;
+    line-height: 1.4;
+}
+
+.muhurta-time {
+    flex-shrink: 0;
+    font-size: 9px;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+.shubh-time {
+    background: #d8f2e5;
+    color: #16966d;
+}
+
+.ashubh-time {
+    background: #ffdcdf;
+    color: #d94e62;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 900px) {
+    .panchang-page {
+        padding: 22px 18px 40px;
+    }
+
+    .celestial-timings {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .vedic-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .muhurta-grid {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .panchang-page {
+        padding: 18px 12px 35px;
+    }
+
+    .panchang-title-card {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .panchang-date-navigation {
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: space-between;
+    }
+
+    .panchang-date-input {
+        flex: 1;
+        width: auto;
+    }
+
+    .celestial-timings {
+        gap: 10px;
+    }
+
+    .celestial-item {
+        padding: 12px;
+    }
+
+    .celestial-info strong {
+        font-size: 12px;
+    }
+
+    .celestial-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .vedic-calendar-card {
+        padding: 16px 13px;
+    }
+
+    .vedic-content-grid {
+        gap: 12px;
+    }
+
+    .vedic-column {
+        padding: 13px;
+    }
+
+    .five-elements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .muhurta-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .muhurta-panel {
+        padding: 16px 13px;
+    }
+
+    .muhurta-heading h2 {
+        font-size: 13px;
+    }
+
+    .muhurta-item {
+        padding: 11px 9px;
+    }
+
+    .muhurta-time {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .celestial-item {
+        gap: 5px;
+        padding: 10px 8px;
+    }
+
+    .celestial-info strong {
+        font-size: 11px;
+    }
+
+    .muhurta-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
